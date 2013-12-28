@@ -78,7 +78,7 @@ This can be useful for creating more entropy from a set of common small
 interchangeable words.
 
 ```rb
-(the|a|some|one)
+"(the|a|some|one)"
 ```
 
 ### Full Example
