@@ -128,8 +128,6 @@ madlib.generate
 
 ## Installation
 
-**Not yet distributed via rubygems yet.**
-
 Add this line to your application's Gemfile:
 
     gem 'madlibs'
