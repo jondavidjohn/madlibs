@@ -1,7 +1,7 @@
 # Madlibs
 
 Sometimes you just need to make something silly on a whim.  That's exactly
-what this is.
+what this gem is and does.
 
 This gem simply takes a template, does some randomizing, applies a dictionary,
 and produces a string.  Depending on the dictionary, it can be quite humorous.
