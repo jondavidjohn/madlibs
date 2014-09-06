@@ -3,6 +3,9 @@ require 'minitest/autorun'
 require 'madlibs'
 
 describe Madlibs::Madlib do
+  def assert_block(test_description, &block)
+    assert test_description, yield
+  end
 
   before do
     @mad = Madlibs::Madlib.new '', {
