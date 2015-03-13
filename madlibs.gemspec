@@ -11,7 +11,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["me@jondavidjohn.com"]
   spec.description   = %q{Because sometimes, you just need to make something stupid.}
   spec.summary       = %q{Create generated text with a combination of coditional templating and a provided dictionary}
-  spec.homepage      = ""
+  spec.homepage      = "https://github.com/jondavidjohn/madlibs"
   spec.license       = "Apache v2"
 
   spec.files         = `git ls-files`.split($/)
