@@ -1,8 +1,5 @@
 # Madlibs
 
-Sometimes you just need to make something silly on a whim.  That's exactly
-what this gem is and does.
-
 This gem simply takes a template, does some randomizing, applies a dictionary,
 and produces a string.  Depending on the dictionary, it can be quite humorous.
 
@@ -86,33 +83,30 @@ interchangeable words.
 ```rb
 require 'madlibs'
 
-# Create a new Madlib object, passing a template
-madlib = Madlibs::Madlib.new 'I will <verb> (the|another)( <adjective>)? <noun>'
-
-# Load your desired dictionary
-madlib.load({
-
-  "nouns" => [
-    "proxy",
-    "cache",
-    "architecture",
-    "fragmentation",
-  ],
-
-  "verbs" => [
-    "refactor",
-    "implement",
-    "replicate",
-    "debug",
-  ],
-
-  "adjectives" => [
-    "distributed",
-    "imperative",
-    "virtualized",
-  ]
-
-})
+# Create a new Madlib object, passing a template and a dictionary.  You can also
+# pass nothing and assign them after the fact with `.dictionary` and `.template`
+madlib = Madlibs::Madlib.new(
+  'I will <verb> (the|another)( <adjective>)? <noun>',
+  {
+    "nouns" => [
+      "proxy",
+      "cache",
+      "architecture",
+      "fragmentation",
+    ],
+    "verbs" => [
+      "refactor",
+      "implement",
+      "replicate",
+      "debug",
+    ],
+    "adjectives" => [
+      "distributed",
+      "imperative",
+      "virtualized",
+    ]
+  }
+)
 
 # Generate your string(s)
 

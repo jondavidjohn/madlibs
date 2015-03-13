@@ -6,7 +6,7 @@ describe Madlibs::Madlib do
   describe 'generate' do
     it 'should work' do
       madlib = Madlibs::Madlib.new(
-        '(wow, )?such <noun>,( very <adjective>,)? (so <verb>)?',
+        '(wow, )?such <noun>,( very <adjective>,)? so <verb>',
         {
           'nouns' => [
             'desk',
