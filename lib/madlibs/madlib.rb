@@ -1,65 +1,30 @@
 require 'active_support/inflector'
+require 'madlibs/template'
+require 'madlibs/dictionary'
 
 module Madlibs
   class Madlib
+    attr_accessor :template
+    attr_reader   :dictionary
 
-    def initialize template, dictionary = nil
-      @template = template
-      unless dictionary.nil?
-        @dictionary = dictionary.clone
-        @original_dictionary = dictionary.clone
-      end
+    def initialize template = '', dictionary_hash = {}
+      self.template = template
+      self.dictionary = dictionary_hash
     end
 
-    def load dictionary
-      @original_dictionary = dictionary.clone
-      @dictionary = dictionary.clone
-    end
-
-    def reload
-      @dictionary = @original_dictionary.clone
-    end
-
-    def retrieve type
-      types = type.pluralize
-      @dictionary[types].delete @dictionary[types].sample
-    end
-
-    def extract_keys template
-      template.scan(/<([^>]*?)>/).flatten
-    end
-
-    def extract_word_lists template
-      template.scan(/\([|a-zA-Z]*\)/)
+    def dictionary=(hash)
+      @dictionary = Dictionary.new hash
     end
 
     def generate
-      reload
-
-      product = @template.clone
-
-      extract_word_lists(product).each do |words|
-        product.gsub! words, words.gsub(/[()]/, '').split('|').sample
-      end
-
-      loop do
-        optionals = product.scan(/\([^\(]*?\)(?=\?)/)
-        break unless optionals.any?
-        optionals.each do |o|
-          if [true, false].sample
-            used_string = o.gsub(/[()]/, '')
-            product.sub! "#{o}?", used_string
-          else
-            product.sub! "#{o}?", ''
+      @dictionary.reload
+      Template.process_word_lists(
+        Template.process_optionals(
+          Template.keys(@template).reduce(@template) do |temp, key|
+            Template.process_key temp, key, @dictionary.retrieve(key.pluralize)
           end
-        end
-      end
-
-      extract_keys(product).each do |key|
-        product.sub! "<#{key}>", retrieve(key)
-      end
-
-      product
+        )
+      )
     end
   end
 end
