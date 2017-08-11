@@ -41,7 +41,7 @@ describe Madlibs::Dictionary do
 
     it 'should retrieve empty string from empty dictionary collection' do
       dictionary = Madlibs::Dictionary.new({ 'items' => [ ] })
-      dictionary.retrieve('items').must_equal ''
+      dictionary.retrieve('items').must_equal 'lksjdf'
     end
 
     it 'should not mutate the provided hash'do
