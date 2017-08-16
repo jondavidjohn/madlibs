@@ -3,6 +3,8 @@
 This gem simply takes a template, does some randomizing, applies a dictionary,
 and produces a string.  Depending on the dictionary, it can be quite humorous.
 
+
+
 ## Usage
 
 ### The Dictionary
