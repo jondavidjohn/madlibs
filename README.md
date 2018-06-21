@@ -1,4 +1,3 @@
-
 # Madlibs
 
 This gem simply takes a template, does some randomizing, applies a dictionary,
